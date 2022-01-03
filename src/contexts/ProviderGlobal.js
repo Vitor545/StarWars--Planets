@@ -13,12 +13,37 @@ const ProviderGlobal = ({ children }) => {
   <ProviderGlobal>
   */
   const [filtro, setFiltro] = useState({ filterByName: { name: '' } });
+  const [filtroNumber, setFiltroNumber] = useState({
+    column: 'population', comparison: 'maior que', value: '0' });
   const [api, setApi] = useState([]);
+
+  // usei o repositorio do Bruno Miranda para saber como fazer a verificação de maior que ...
+  // Source: https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/109/commits/ef2c76c68688e118fc465f177595bb5653cdbcf9
+
+  const onClickButton = () => {
+    const { column, comparison, value } = filtroNumber;
+    const filtraNumber = api.filter((obj) => {
+      switch (comparison) {
+      case 'maior que':
+        return (obj[column] > Number(value));
+      case 'menor que':
+        return (obj[column] < Number(value));
+      case 'igual a':
+        return (obj[column] === value);
+      default:
+        return (obj[column] === value);
+      }
+    });
+
+    setApi(filtraNumber);
+  };
 
   const values = {
     filtro,
     api,
     setFiltro,
+    setFiltroNumber,
+    onClickButton,
   };
 
   const requestApi = async () => {
