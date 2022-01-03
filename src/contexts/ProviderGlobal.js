@@ -16,6 +16,8 @@ const ProviderGlobal = ({ children }) => {
   const [filtroNumber, setFiltroNumber] = useState({
     column: 'population', comparison: 'maior que', value: '0' });
   const [api, setApi] = useState([]);
+  const [columnsOption, setColumnsOption] = useState(['population', 'orbital_period',
+    'diameter', 'rotation_period', 'surface_water']);
 
   // usei o repositorio do Bruno Miranda para saber como fazer a verificação de maior que ...
   // Source: https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/109/commits/ef2c76c68688e118fc465f177595bb5653cdbcf9
@@ -34,8 +36,8 @@ const ProviderGlobal = ({ children }) => {
         return (obj[column] === value);
       }
     });
-
     setApi(filtraNumber);
+    setColumnsOption(columnsOption.filter((item) => item !== column));
   };
 
   const values = {
@@ -44,6 +46,7 @@ const ProviderGlobal = ({ children }) => {
     setFiltro,
     setFiltroNumber,
     onClickButton,
+    columnsOption,
   };
 
   const requestApi = async () => {

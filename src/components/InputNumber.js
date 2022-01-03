@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import ProviderContext from '../contexts/ProviderContext';
 
 export default function InputNumber() {
-  const { onClickButton, setFiltroNumber } = useContext(ProviderContext);
+  const { onClickButton, setFiltroNumber, columnsOption } = useContext(ProviderContext);
   const [inputValue, setinputValue] = useState(0);
 
   const handleChangeInputNumber = ({ target: { value, name } }) => {
@@ -17,11 +17,11 @@ export default function InputNumber() {
   return (
     <>
       <select data-testid="column-filter" name="column" onChange={ handleChangeNumber }>
-        <option value="population">population</option>
-        <option value="orbital_period">orbital_period</option>
-        <option value="diameter">diameter</option>
-        <option value="rotation_period">rotation_period</option>
-        <option value="surface_water">surface_water</option>
+        {
+          columnsOption.map((item) => (
+            <option key={ item } value={ item }>{ item }</option>
+          ))
+        }
       </select>
       <select
         data-testid="comparison-filter"
