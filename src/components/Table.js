@@ -1,20 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
+import ProviderContext from '../contexts/ProviderContext';
 
 export default function Table() {
-  const [api, setApi] = useState([]);
-
-  const requestApi = async () => {
-    const url = 'https://swapi-trybe.herokuapp.com/api/planets/';
-    const response = await fetch(url);
-    const data = await response.json();
-    setApi(data.results);
-  };
-
-  useEffect(() => {
-    requestApi();
-  }, []);
-
-  console.log(api);
+  // aqui ele desistrutura por isso na hora de passar tem que passar um objeto ou array
+  const { api, filtro } = useContext(ProviderContext);
+  const { filterByName: { name } } = filtro;
   return (
     <table>
       <thead>
@@ -35,22 +25,28 @@ export default function Table() {
         </tr>
       </thead>
       <tbody>
-        { api.map((obj) => (
-          <tr key={ obj.name }>
-            <td>{obj.name}</td>
-            <td>{obj.rotation_period}</td>
-            <td>{obj.orbital_period}</td>
-            <td>{obj.diameter}</td>
-            <td>{obj.climate}</td>
-            <td>{obj.gravity}</td>
-            <td>{obj.terrain}</td>
-            <td>{obj.surface_water}</td>
-            <td>{obj.population}</td>
-            <td>{obj.films}</td>
-            <td>{obj.created}</td>
-            <td>{obj.edited}</td>
-            <td>{obj.url}</td>
-          </tr>))}
+        {
+
+          api.filter((obj) => obj.name.includes(name))
+            .map((objf) => (
+              <tr key={ objf.name }>
+                <td>{objf.name}</td>
+                <td>{objf.rotation_period}</td>
+                <td>{objf.orbital_period}</td>
+                <td>{objf.diameter}</td>
+                <td>{objf.climate}</td>
+                <td>{objf.gravity}</td>
+                <td>{objf.terrain}</td>
+                <td>{objf.surface_water}</td>
+                <td>{objf.population}</td>
+                <td>{objf.films}</td>
+                <td>{objf.created}</td>
+                <td>{objf.edited}</td>
+                <td>{objf.url}</td>
+              </tr>
+            ))
+
+        }
       </tbody>
     </table>
   );
