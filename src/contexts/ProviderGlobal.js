@@ -60,7 +60,7 @@ const ProviderGlobal = ({ children }) => {
     requestApi();
   }, []);
 
-  // usei o repositorio do Bruno Miranda para entender essa ṕarte.
+  // usei o repositorio do Bruno Miranda para entender essa ṕarte
   // Source: https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/109/commits/05ac94ef4168477a08e5c3e22eefed0bbe72658e
   return (
     <ProviderContext.Provider value={ values }>
