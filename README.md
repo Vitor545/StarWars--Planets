@@ -1,10 +1,10 @@
-## Projeto StarWars Planets
+## Projeto Star Wars Planets
  
 <h3 align='center'> 🪐 Há muito tempo, em uma galáxia muito, muito distante… </h3>
 
 ## 📄 Contexto
 
-**Já até tocou a música na sua cabeça né?** Nesse projeto eu criei uma aplicação para `pesquisar` e `listar e filtrar planetas dos filmes de Star Wars`. Tudo isso usando usando Context API e Hooks para controlar os estados globais.
+**Já até tocou a música na sua cabeça né?** Nesse projeto eu criei uma aplicação para `pesquisar, listar e filtrar planetas dos filmes de Star Wars`. Tudo isso usando usando `Context API e Hooks` para controlar os estados globais.
 
 <br/>
 
